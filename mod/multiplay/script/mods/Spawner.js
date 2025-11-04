@@ -8,7 +8,7 @@ function tdspawner_eventStartLevel()
 
 function flush()
 {
-	if (Spawner.queue.length > 0)
+	if (Spawner.locations.length > 0 && Spawner.queue.length > 0)
 	{
 		Spawner.spawn();
 		queue("flush");
