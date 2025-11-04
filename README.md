@@ -1,6 +1,8 @@
 # Tower Defense Mod
-- Protect your command center from the Scavenger invaders
-- Scavengers increase in strength
+- Protect your command center!
+- Scavenger invaders spawn on the edges of the map
+- Earn power by destroying scavengers
+- The scavengers grow stronger with each round
 
 ## Play
 1. Download the map `📦4p-td1_v3.wz`. Put in `📁maps/`.
