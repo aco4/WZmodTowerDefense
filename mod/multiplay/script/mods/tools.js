@@ -50,19 +50,18 @@ function disableVTOL()
  */
 function calculateRanks(totalNumRounds)
 {
-	const totalNumRanks = Stats.Brain["Z NULL BRAIN"].RankThresholds.length;
-	const result = Array(totalNumRounds + 1).fill(0);
-
-	if (totalNumRounds <= 1)
+	const result = new Array(totalNumRounds + 1).fill(0);
+	if (totalNumRounds < 2)
 	{
-		return result; // [0] or [0,0]
+		return result;
 	}
 
-	const step = Math.floor(totalNumRanks / (totalNumRounds - 1));
+	const totalNumRanks = Stats.Brain["Z NULL BRAIN"].RankThresholds.length;
+	const step = Math.max(1, Math.floor(totalNumRanks / (totalNumRounds - 1)));
 
-	for (let i = 0; i < totalNumRounds; i++)
+	for (let i = 1; i <= totalNumRounds; i++)
 	{
-		result[i + 1] = step * i;
+		result[i] = Math.floor((i - 1) / Math.ceil((totalNumRounds - 1) / totalNumRanks)) * step;
 	}
 
 	return result;
