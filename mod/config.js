@@ -1,10 +1,10 @@
 scavs = [
     "*BaBa MG* *BaBa Body* BaBaLegs",
-],
+]
 wheels = [
     "Machinegun Viper Wheels",
     "Flamer Viper Wheels",
-],
+]
 halftracks = [
     "Twin Machinegun Viper Half-tracks",
 ]
