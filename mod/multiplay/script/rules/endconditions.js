@@ -80,7 +80,7 @@ function checkEndConditions()
 	newlyLosingTeams.forEach(team => team.setState(STATE_loser));
 
 	const contenderTeams = teams.filter(team => team.isContender());
-	if (won || contenderTeams.length == 0) // game end
+	if ((lastRound && Spawner.queue.length == 0 && enumDroid(scavengerPlayer).length == 0) || contenderTeams.length == 0) // game end
 	{
 		contenderTeams.forEach(team => team.setState(STATE_winner));
 

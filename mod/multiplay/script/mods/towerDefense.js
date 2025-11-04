@@ -1,6 +1,6 @@
 let currentIndex = 0;
 let rank;
-let won = false;
+let lastRound = false;
 
 namespace("td_");
 
@@ -55,7 +55,7 @@ function next()
 	}
 	else
 	{
-		won = true;
+		lastRound = true;
 	}
 }
 
