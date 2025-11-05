@@ -12,6 +12,7 @@ function td_eventStartLevel()
 	rank = calculateRanks(totalRounds);
 	next();
 
+	setTimer("updateResearch", 10 * 1000);
 	if (scavengers === 0) // Scavenger AI disabled
 	{
 		// Control with fake AI
@@ -34,9 +35,15 @@ function td_eventDestroyed(object)
 	}
 }
 
+function updateResearch()
+{
+	const timeMs = currentResearchTime() - researchDelayMs;
+	giveResearch(scavengerPlayer, timeMs);
+}
+
 function next()
 {
-	const obj = CONFIG.at(currentIndex);
+	const obj = config.at(currentIndex);
 	if (obj)
 	{
 		if (obj.type == "round")
@@ -66,8 +73,6 @@ function processRound(obj)
 	console(" ");
 
 	Spawner.rank = rank[obj.round];
-
-	giveResearch(scavengerPlayer, currentResearchTime());
 
 	queue("next");
 }

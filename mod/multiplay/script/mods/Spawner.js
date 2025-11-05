@@ -3,6 +3,7 @@ namespace("tdspawner_")
 function tdspawner_eventStartLevel()
 {
 	flush();
+	updateSpawnLocations();
 	setTimer("updateSpawnLocations", 30 * 1000);
 }
 

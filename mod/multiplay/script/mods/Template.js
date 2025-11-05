@@ -73,28 +73,35 @@ class Template
 
 		return null;
 
-		function partitionIntoTurrets(words, numTurrets) {
-			if (numTurrets === 0) {
-				return words.length === 0 ? [] : null;
+		function partitionIntoTurrets(words, maxTurrets)
+		{
+			if (words.length === 0)
+			{
+				return [];
 			}
-
-			if (numTurrets === 1) {
-				const turret = words.join(" ");
-				return Stats.Weapon.hasOwnProperty(turret) ? [turret] : null;
+			if (maxTurrets === 0)
+			{
+				return null; // Still have words but no slots left
 			}
-
+			// Try using all remaining words as a single turret
+			const turret = words.join(" ");
+			if (Stats.Weapon.hasOwnProperty(turret))
+			{
+				return [turret];
+			}
 			// Try each possible length for the first turret
-			for (let i = 1; i <= words.length - numTurrets + 1; i++) {
+			for (let i = 1; i < words.length; i++)
+			{
 				const firstTurret = words.slice(0, i).join(" ");
-
-				if (Stats.Weapon.hasOwnProperty(firstTurret)) {
-					const rest = partitionIntoTurrets(words.slice(i), numTurrets - 1);
-					if (rest !== null) {
+				if (Stats.Weapon.hasOwnProperty(firstTurret))
+				{
+					const rest = partitionIntoTurrets(words.slice(i), maxTurrets - 1);
+					if (rest !== null)
+					{
 						return [firstTurret, ...rest];
 					}
 				}
 			}
-
 			return null;
 		}
 	}

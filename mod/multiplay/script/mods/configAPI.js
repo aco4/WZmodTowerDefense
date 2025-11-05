@@ -1,25 +1,39 @@
-function wait(seconds) {
-	return { type: "wait", seconds };
+let config = [];
+let totalRounds = 0;
+let researchDelayMs = 0;
+
+function round()
+{
+	config.push({ type: "round", round: ++totalRounds });
+}
+
+function setResearchDelay(seconds)
+{
+	researchDelayMs = seconds * 1000;
+}
+
+function wait(seconds)
+{
+	config.push({ type: "wait", seconds });
 }
 
 /**
  * @param {number} count
  * @param {string[]} templatePool - e.g. [ "Machinegun Viper Wheels", "Flamer Viper Wheels" ]
- * @returns {object|null} null on failure
  */
 function spawn(count, templatePool)
 {
 	// Validate the function parameters
 	if (typeof count !== "number" || count < 0 || !Array.isArray(templatePool))
 	{
-		return null;
+		return;
 	}
 
 	// Convert each string in the templatePool to an actual Template
 	templatePool = templatePool.map(t => Template.fromString(t)).filter(t => !!t);
 	if (templatePool.length == 0)
 	{
-		return null;
+		return;
 	}
 
 	// Randomly select templates from the templatePool
@@ -30,13 +44,5 @@ function spawn(count, templatePool)
 		selectedTemplates.push(selectedTemplate);
 	}
 
-	return { type: "spawn", templates: selectedTemplates };
+	config.push({ type: "spawn", templates: selectedTemplates });
 }
-
-function round()
-{
-	totalRounds++;
-	return { type: "round", round: totalRounds };
-}
-
-let totalRounds = 0;
