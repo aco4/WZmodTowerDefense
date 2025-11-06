@@ -14,6 +14,7 @@ function td_eventStartLevel()
 	next();
 
 	setTimer("updateResearch", 10 * 1000);
+	setTimer("updateMinimap", 500);
 
 	if (scavengers === 0) // Scavenger AI disabled
 	{
@@ -41,6 +42,11 @@ function updateResearch()
 {
 	const timeMs = currentResearchTime() - researchDelayMs;
 	giveResearch(scavengerPlayer, timeMs);
+}
+
+function updateMinimap()
+{
+	setMiniMap(true);
 }
 
 function next()
