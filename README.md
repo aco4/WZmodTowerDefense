@@ -3,6 +3,7 @@
 - Scavenger invaders spawn on the edges of the map
 - Earn power by destroying scavengers
 - Works on any map, with any number of players
+- Must start with Command Center. **Full Base** recommended
 
 ## Download
 1. Start Warzone 2100. Click **Options**
