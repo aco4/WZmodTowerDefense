@@ -144,9 +144,9 @@ wait(140), round(16), spawn(5,scorps), spawn(15,mantis), spawn(5,boss1), spawn(1
 wait(140), round(17), spawn(15,cybsT2), spawn(20,mantis), spawn(40,panthers), spawn(10,hra)
 wait(140), round(18), spawn(40,mantis), spawn(10,boss1), spawn(50,panthers), spawn(16,hra)
 wait(140), round(19), spawn(50,mantis), spawn(40,panthers), spawn(18,hra), spawn(45,cybsT2)
-wait(210), round(20), spawn(40,mantis), spawn(50,boss2), spawn(20,hra), spawn(30,panthers)
+wait(210), round(20), spawn(40,mantis), spawn(40,boss2), spawn(20,hra), spawn(20,panthers)
 
-wait(210), round(21), spawn(60,mantis), spawn(20,tigers), spawn(15,seraph)
+wait(210), round(21), spawn(50,mantis), spawn(20,tigers), spawn(15,seraph)
 wait(140), round(22), spawn(40,mantis), spawn(30,tigers), spawn(20,seraph)
 wait(140), round(23), spawn(20,cybsT3), spawn(20,mantis), spawn(5,hboss2), spawn(40,tigers)
 wait(140), round(24), spawn(10,hboss2), spawn(50,tigers), spawn(25,seraph)
