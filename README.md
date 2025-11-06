@@ -2,12 +2,14 @@
 - Protect your command center!
 - Scavenger invaders spawn on the edges of the map
 - Earn power by destroying scavengers
-- The scavengers grow stronger with each round
+- Works on any map, with any number of players
 
-## Play
-1. Download the map `📦4p-td1_v3.wz`. Put in `📁maps/`.
-2. Compress/zip/pack `📁multiplay/` and `📄config.js` into `📦TowerDefenseMod.zip`. Put in `📁mods/4.6.1/autoload/`.
-3. Restart Warzone 2100
+## Download
+1. Start Warzone 2100. Click **Options**
+2. Click "Open Configuration Directory"
+3. Download [`📦4p-td1_v3.wz`](https://maps.wz2100.net/#/map/4p/td1_v3/). Put in `📁maps/`
+4. Download [`📦TowerDefenseMod.zip`](https://github.com/aco4/WZmodTowerDefense/releases/latest). Put in `📁mods/4.6.1/autoload/`
+5. Restart Warzone 2100
 
 ## Config
-Edit `📄config.js` before compress/zip/pack.
+Edit `📄config.js`

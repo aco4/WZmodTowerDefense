@@ -14,6 +14,7 @@ function td_eventStartLevel()
 	next();
 
 	setTimer("updateResearch", 10 * 1000);
+
 	if (scavengers === 0) // Scavenger AI disabled
 	{
 		// Control with fake AI
