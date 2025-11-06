@@ -8,6 +8,7 @@ function td_eventStartLevel()
 {
 	removeScavengerAI();
 	disableVTOL();
+	disableBuildHQ();
 	makeEverythingAvailable(scavengerPlayer);
 	rank = calculateRanks(totalRounds);
 	next();

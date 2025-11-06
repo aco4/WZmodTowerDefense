@@ -40,6 +40,14 @@ function disableVTOL()
 	}
 }
 
+function disableBuildHQ()
+{
+	for (let player = 0; player < maxPlayers; player++)
+	{
+		setStructureLimits("A0CommandCentre", 0, player);
+	}
+}
+
 /**
  * We want to increase the rank of the units in each round linearly and
  * consistently. To do this, generate an array where the index is the round
