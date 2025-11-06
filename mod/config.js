@@ -68,7 +68,6 @@ tigers = [
     "Scourge Tiger Half-tracks",
 ]
 nexus = [
-    "Rail Gun Retaliation Half-tracks",
     "Pulse Laser Retaliation Half-tracks",
     "Scourge Retaliation Half-tracks",
     "Rail Gun Retribution Half-tracks",
@@ -131,13 +130,13 @@ wait(105), round(3), spawn(30,scavs), spawn(40,people), spawn(5,wheels)
 wait(110), round(4), spawn(2,vipers), spawn(10,people), spawn(10,wheels), spawn(5,scavs), spawn(10,people)
 wait(115), round(5), spawn(15,scavs), spawn(4,vipers), spawn(10,wheels)
 wait(120), round(6), spawn(10,bugs), spawn(2,cobras), spawn(8,vipers), spawn(50,people)
-wait(125), round(7), spawn(5,cybsT0), spawn(10,vipers), spawn(10,wheels), spawn(4,cobras)
-wait(130), round(8), spawn(15,bugs), spawn(8,cobras), spawn(3,mra), spawn(25,wheels), spawn(10,vipers)
-wait(135), round(9), spawn(20,bugs), spawn(25,scavs), spawn(5,mra), spawn(15,cobras)
-wait(180), round(10), spawn(15,cybsT0), spawn(10,mra), spawn(20,cobras), spawn(10,wheels), spawn(5,boss1)
+wait(125), round(7), spawn(4,cybsT0), spawn(10,vipers), spawn(10,wheels), spawn(4,cobras)
+wait(130), round(8), spawn(15,bugs), spawn(8,cobras), spawn(2,mra), spawn(25,wheels), spawn(10,vipers)
+wait(135), round(9), spawn(20,bugs), spawn(25,scavs), spawn(4,mra), spawn(15,cobras)
+wait(180), round(10), spawn(12,cybsT0), spawn(6,mra), spawn(20,cobras), spawn(10,wheels), spawn(5,boss1)
 
-wait(180), round(11), spawn(35,bugs), spawn(5,scorps), spawn(5,pythons), spawn(15,mra)
-wait(140), round(12), spawn(10,cybsT1), spawn(15,pythons), spawn(20,mra), spawn(15,scorps)
+wait(180), round(11), spawn(35,bugs), spawn(5,scorps), spawn(5,pythons), spawn(10,mra)
+wait(140), round(12), spawn(10,cybsT1), spawn(15,pythons), spawn(15,mra), spawn(15,scorps)
 wait(140), round(13), spawn(30,scorps), spawn(15,pythons), spawn(15,bugs), spawn(10,pythons), spawn(10,mra), spawn(6,hra)
 wait(140), round(14), spawn(30,pythons), spawn(10,panthers), spawn(30,cybsT1), spawn(4,hra)
 wait(140), round(15), spawn(100,bugs), spawn(35,scorps), spawn(10,mantis), spawn(10,hra), spawn(15,pythons), spawn(15,panthers)
