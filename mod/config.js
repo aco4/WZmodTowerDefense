@@ -64,15 +64,13 @@ hra = [
 ]
 tigers = [
     "Needle Gun Tiger Half-tracks",
-    "Pulse Laser Tiger Half-tracks",
-    "Scourge Tiger Half-tracks",
+    "Flashlight Tiger Half-tracks",
+    "Scourge Missile Tiger Half-tracks",
 ]
 nexus = [
-    "Pulse Laser Retaliation Half-tracks",
-    "Scourge Retaliation Half-tracks",
+    "Pulse Laser Retribution Half-tracks",
     "Rail Gun Retribution Half-tracks",
-    "Heavy Laser Retribution Half-tracks",
-    "Scourge Retribution Half-tracks",
+    "Scourge Missile Retribution Half-tracks",
 ]
 seraph = [
     "Seraph Missile Array Retaliation Wheels",
@@ -104,55 +102,59 @@ cybsT4 = [
     "Super Pulse Laser Cyborg Cyborg Heavy Body Cyborg Propulsion",
     "Super Rail-Gunner Cyborg Heavy Body Cyborg Propulsion",
 ]
-boss1 = [
-    "Assault Gun Vengeance Hover",
+vengeanceH = [
+    "Hyper Velocity Cannon Vengeance Hover",
+]
+vengeanceT = [
     "Hyper Velocity Cannon Vengeance Tracks",
 ]
-boss2 = [
+wyvernH = [
     "Twin Assault Cannon Wyvern Hover",
+]
+wyvernT = [
     "Twin Assault Cannon Wyvern Tracks",
 ]
-boss3 = [
+dragonH = [
     "Seraph Missile Array Seraph Missile Array Dragon Hover",
     "Gauss Cannon Gauss Cannon Dragon Hover",
+]
+dragonT = [
     "Seraph Missile Array Seraph Missile Array Dragon Tracks",
     "Gauss Cannon Gauss Cannon Dragon Tracks",
 ]
-hboss2 = [
-    "Twin Assault Cannon Wyvern Hover",
-]
 
 setResearchDelay(360)
+setPowerRewardFunction(power => (4*power)**0.75)
 
 wait(180), round(1), spawn(15,people), spawn(5,scavs), spawn(15,people)
 wait(100), round(2), spawn(30,people), spawn(15,scavs), spawn(30,people)
-wait(105), round(3), spawn(30,scavs), spawn(40,people), spawn(5,wheels)
-wait(110), round(4), spawn(2,vipers), spawn(10,people), spawn(10,wheels), spawn(5,scavs), spawn(10,people)
-wait(115), round(5), spawn(15,scavs), spawn(4,vipers), spawn(10,wheels)
+wait(100), round(3), spawn(30,scavs), spawn(40,people), spawn(5,wheels)
+wait(100), round(4), spawn(2,vipers), spawn(10,people), spawn(10,wheels), spawn(5,scavs), spawn(10,people)
+wait(110), round(5), spawn(15,scavs), spawn(4,vipers), spawn(10,wheels)
 wait(120), round(6), spawn(10,bugs), spawn(2,cobras), spawn(8,vipers), spawn(50,people)
 wait(125), round(7), spawn(4,cybsT0), spawn(10,vipers), spawn(10,wheels), spawn(4,cobras)
 wait(130), round(8), spawn(15,bugs), spawn(8,cobras), spawn(2,mra), spawn(25,wheels), spawn(10,vipers)
-wait(135), round(9), spawn(20,bugs), spawn(25,scavs), spawn(4,mra), spawn(15,cobras)
-wait(180), round(10), spawn(12,cybsT0), spawn(6,mra), spawn(20,cobras), spawn(10,wheels), spawn(5,boss1)
+wait(135), round(9), spawn(20,bugs), spawn(30,scavs), spawn(4,mra), spawn(15,cobras)
+wait(180), round(10), spawn(12,cybsT0), spawn(6,mra), spawn(20,cobras), spawn(10,wheels), spawn(3,vengeanceH), spawn(3,vengeanceT)
 
-wait(180), round(11), spawn(35,bugs), spawn(5,scorps), spawn(5,pythons), spawn(10,mra)
-wait(140), round(12), spawn(10,cybsT1), spawn(15,pythons), spawn(15,mra), spawn(15,scorps)
-wait(140), round(13), spawn(30,scorps), spawn(15,pythons), spawn(15,bugs), spawn(10,pythons), spawn(10,mra), spawn(6,hra)
-wait(140), round(14), spawn(30,pythons), spawn(10,panthers), spawn(30,cybsT1), spawn(4,hra)
-wait(140), round(15), spawn(100,bugs), spawn(35,scorps), spawn(10,mantis), spawn(10,hra), spawn(15,pythons), spawn(15,panthers)
-wait(140), round(16), spawn(5,scorps), spawn(15,mantis), spawn(5,boss1), spawn(12,hra), spawn(10,pythons), spawn(30,panthers)
-wait(140), round(17), spawn(15,cybsT2), spawn(20,mantis), spawn(40,panthers), spawn(10,hra)
-wait(140), round(18), spawn(40,mantis), spawn(10,boss1), spawn(50,panthers), spawn(16,hra)
-wait(140), round(19), spawn(50,mantis), spawn(40,panthers), spawn(18,hra), spawn(45,cybsT2)
-wait(210), round(20), spawn(40,mantis), spawn(40,boss2), spawn(20,hra), spawn(20,panthers)
+wait(160), round(11), spawn(35,bugs), spawn(5,scorps), spawn(5,pythons), spawn(10,mra)
+wait(140), round(12), spawn(10,cybsT1), spawn(15,pythons), spawn(12,mra), spawn(15,scorps)
+wait(140), round(13), spawn(30,scorps), spawn(2,vengeanceT), spawn(25,pythons), spawn(15,bugs), spawn(6,mra), spawn(6,hra)
+wait(140), round(14), spawn(30,pythons), spawn(10,panthers), spawn(30,cybsT1), spawn(8,hra)
+wait(140), round(15), spawn(100,bugs), spawn(35,scorps), spawn(10,mantis), spawn(5,vengeanceH)
+wait(140), round(16), spawn(3,vengeanceT), spawn(5,scorps), spawn(15,mantis), spawn(6,vengeanceH), spawn(12,hra), spawn(10,pythons), spawn(30,panthers)
+wait(140), round(17), spawn(3,vengeanceT), spawn(15,cybsT2), spawn(20,mantis), spawn(40,panthers), spawn(10,hra)
+wait(140), round(18), spawn(10,vengeanceH), spawn(25,mantis), spawn(60,panthers), spawn(16,hra)
+wait(140), round(19), spawn(35,mantis), spawn(20,panthers), spawn(18,hra), spawn(45,cybsT2)
+wait(200), round(20), spawn(25,mantis), spawn(30,wyvernH), spawn(15,wyvernT), spawn(4,vengeanceT), spawn(20,hra), spawn(20,panthers)
 
-wait(210), round(21), spawn(50,mantis), spawn(20,tigers), spawn(15,seraph)
-wait(140), round(22), spawn(40,mantis), spawn(30,tigers), spawn(20,seraph)
-wait(140), round(23), spawn(20,cybsT3), spawn(20,mantis), spawn(5,hboss2), spawn(40,tigers)
-wait(140), round(24), spawn(10,hboss2), spawn(50,tigers), spawn(25,seraph)
-wait(140), round(25), spawn(20,hboss2), spawn(20,nexus), spawn(50,tigers), spawn(60,cybsT3)
-wait(140), round(26), spawn(30,hboss2), spawn(30,nexus), spawn(40,tigers), spawn(30,seraph)
-wait(140), round(27), spawn(100,hboss2), spawn(40,nexus), spawn(30,tigers), spawn(35,seraph)
-wait(140), round(28), spawn(30,cybsT4), spawn(40,hboss2), spawn(50,nexus), spawn(15,tigers), spawn(40,seraph)
-wait(140), round(29), spawn(40,hboss2), spawn(60,nexus), spawn(45,seraph)
-wait(300), round(30), spawn(80,boss3), spawn(50,seraph), spawn(90,cybsT4)
+wait(170), round(21), spawn(6,vengeanceT), spawn(15,tigers), spawn(6,seraph), spawn(30,mantis)
+wait(140), round(22), spawn(8,vengeanceH), spawn(45,mantis), spawn(25,tigers), spawn(8,seraph)
+wait(140), round(23), spawn(20,cybsT3), spawn(15,mantis), spawn(5,wyvernH), spawn(5,wyvernT), spawn(10,vengeanceT), spawn(30,tigers)
+wait(140), round(24), spawn(10,seraph), spawn(10,wyvernH), spawn(60,tigers), spawn(10,nexus)
+wait(140), round(25), spawn(10,wyvernT), spawn(15,vengeanceT), spawn(25,nexus), spawn(20,tigers), spawn(60,cybsT3)
+wait(140), round(26), spawn(12,seraph), spawn(20,wyvernH), spawn(45,nexus), spawn(25,tigers)
+wait(140), round(27), spawn(15,vengeanceH), spawn(60,wyvernH), spawn(20,nexus), spawn(14,seraph)
+wait(140), round(28), spawn(10,wyvernT), spawn(30,cybsT4), spawn(60,nexus), spawn(16,seraph)
+wait(140), round(29), spawn(20,wyvernT), spawn(18,seraph), spawn(40,nexus)
+wait(270), round(30), spawn(60,dragonH), spawn(40,dragonT), spawn(20,dragonH), spawn(90,cybsT4)

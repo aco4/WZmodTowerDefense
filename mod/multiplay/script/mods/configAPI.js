@@ -1,10 +1,11 @@
-let config = [];
+const actions = [];
 let totalRounds = 0;
 let researchDelayMs = 0;
+let powerRewardFunction = (power) => power;
 
 function round()
 {
-	config.push({ type: "round", round: ++totalRounds });
+	actions.push({ type: "round", round: ++totalRounds });
 }
 
 function setResearchDelay(seconds)
@@ -12,9 +13,14 @@ function setResearchDelay(seconds)
 	researchDelayMs = seconds * 1000;
 }
 
+function setPowerRewardFunction(f)
+{
+	powerRewardFunction = (power) => Math.ceil(f(power));
+}
+
 function wait(seconds)
 {
-	config.push({ type: "wait", seconds });
+	actions.push({ type: "wait", seconds });
 }
 
 /**
@@ -44,5 +50,5 @@ function spawn(count, templatePool)
 		selectedTemplates.push(selectedTemplate);
 	}
 
-	config.push({ type: "spawn", templates: selectedTemplates });
+	actions.push({ type: "spawn", templates: selectedTemplates });
 }

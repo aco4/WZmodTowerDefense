@@ -1,6 +1,4 @@
-let currentIndex = 0;
 let rank;
-let lastRound = false;
 
 namespace("td_");
 
@@ -25,13 +23,13 @@ function td_eventStartLevel()
 function td_eventDestroyed(object)
 {
 	// Reward players with power upon killing a scavenger
-	// The reward amount = the cost of the destroyed object
+	// The reward amount = the cost of the destroyed object, modified by some power reward function
 	if (object.player == scavengerPlayer)
 	{
 		for (let player = 0; player < maxPlayers; player++)
 		{
 			hackNetOff();
-			setPower(playerPower(player) + object.cost, player);
+			setPower(playerPower(player) + powerRewardFunction(object.cost), player);
 			hackNetOn();
 		}
 	}
@@ -45,51 +43,46 @@ function updateResearch()
 
 function next()
 {
-	const obj = config.at(currentIndex);
-	if (obj)
+	const action = actions.shift();
+	if (action)
 	{
-		if (obj.type == "round")
+		if (action.type == "round")
 		{
-			processRound(obj);
+			processRound(action);
 		}
-		else if (obj.type == "wait")
+		else if (action.type == "wait")
 		{
-			processWait(obj);
+			processWait(action);
 		}
-		else if (obj.type == "spawn")
+		else if (action.type == "spawn")
 		{
-			processSpawn(obj);
+			processSpawn(action);
 		}
-		currentIndex++;
-	}
-	else
-	{
-		lastRound = true;
 	}
 }
 
-function processRound(obj)
+function processRound(action)
 {
 	console(" ");
-	console(_("Round") + " " + obj.round + "/" + totalRounds);
+	console(_("Round") + " " + action.round + "/" + totalRounds);
 	console(" ");
 
-	Spawner.rank = rank[obj.round];
+	Spawner.rank = rank[action.round];
 
 	queue("next");
 }
 
-function processWait(obj)
+function processWait(action)
 {
-	if (obj.seconds > 20)
+	if (action.seconds > 20)
 	{
-		setMissionTime(obj.seconds);
+		setMissionTime(action.seconds);
 	}
-	queue("next", obj.seconds * 1000);
+	queue("next", action.seconds * 1000);
 }
 
-function processSpawn(obj)
+function processSpawn(action)
 {
-	Spawner.queue.push(...obj.templates);
+	Spawner.queue.push(...action.templates);
 	queue("next");
 }
