@@ -66,9 +66,8 @@ function processRound(action)
 	console(" ");
 	console(_("Round") + " " + action.round + "/" + totalRounds);
 	console(" ");
-
 	Spawner.rank = rank[action.round];
-
+	playSound("pcv373.ogg"); // "Scavengers detected"
 	queue("next");
 }
 
