@@ -1,0 +1,28 @@
+{
+	"locked": {
+		"position": true
+	},
+	"challenge": {
+		"map": "td1_v3",
+		"maxPlayers": 2,
+		"name": "Tower Defense",
+		"description": "Use trucks to build structures and prevent the scavengers from destroying your command center.",
+		"difficulty": "Hard",
+		"scavengers": 2,
+		"alliances": 3,
+		"powerLevel": 2,
+		"bases": 3,
+		"techLevel": 1,
+		"version": 2
+	},
+	"player_0": {
+		"position": 0,
+		"team": 0
+	},
+	"player_1": {
+		"position": 1,
+		"team": 1,
+		"ai": "multiplay/skirmish/Scavengers.js",
+		"difficulty": "Insane"
+	}
+}
