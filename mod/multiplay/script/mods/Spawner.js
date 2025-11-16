@@ -40,9 +40,7 @@ class Spawner
 		}
 		const [x, y] = Spawner.locations[syncRandom(Spawner.locations.length)];
 		const template = Spawner.queue.shift();
-		hackNetOff();
 		const droid = template.spawn(scavengerPlayer, x, y);
-		hackNetOn();
 		setDroidExperience(droid, Stats.Brain["Z NULL BRAIN"].RankThresholds[Spawner.rank]);
 	}
 
