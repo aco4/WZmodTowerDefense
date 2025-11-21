@@ -4,12 +4,12 @@
  */
 function makeEverythingAvailable(player)
 {
-	const all = [
-		"Body", "Propulsion", "Weapon", "Sensor", "Construct", "Repair", "ECM"
-	].map(x => Object.values(Stats[x])).flat();
-	for (const component of all)
+	for (const x of [ "Body", "Propulsion", "Weapon", "Sensor", "Construct", "Repair", "ECM" ])
 	{
-		makeComponentAvailable(component.Id, player);
+		for (const component of Object.values(Stats[x]))
+		{
+			makeComponentAvailable(component.Id, player);
+		}
 	}
 }
 

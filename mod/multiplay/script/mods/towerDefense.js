@@ -58,15 +58,15 @@ function defaultPowerRewardFunction()
 {
 	if (powerType === 0) // Low
 	{
-		return power => (9*power)**0.51
+		return power => (9*power)**0.51;
 	}
 	else if (powerType === 1) // Medium
 	{
-		return power => (9*power)**0.56
+		return power => (9*power)**0.56;
 	}
 	else // High
 	{
-		return power => (9*power)**0.60
+		return power => (9*power)**0.60;
 	}
 }
 
