@@ -98,6 +98,7 @@ function isAlive(player) {
 }
 
 function isGameOver(alive, dead) {
-    return (alive.length <= 0 || isGameExpired())
-        || (actions.length == 0 && Spawner.queue.length == 0 && countDroid(DROID_ANY, scavengerPlayer) == 0);
+    return alive.length <= 0
+        || isGameExpired()
+        || (index >= actions.length && Spawner.queue.length == 0 && countDroid(DROID_ANY, scavengerPlayer) == 0);
 }
