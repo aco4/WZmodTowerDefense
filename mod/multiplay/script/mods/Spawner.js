@@ -45,8 +45,7 @@ class Spawner
 		const [x, y] = Spawner.locations[syncRandom(Spawner.locations.length)];
 		const template = Spawner.queue.shift();
 		const droid = Template.spawn(template, Spawner.player, x, y);
-		const rank = Spawner.rank ?? 0; // Spawner.rank could be undefined after a save-load, so default to 0
-		setDroidExperience(droid, Stats.Brain["Z NULL BRAIN"].RankThresholds[rank]);
+		setDroidExperience(droid, Stats.Brain["Z NULL BRAIN"].RankThresholds[Spawner.rank]);
 	}
 
 	static updateLocations()

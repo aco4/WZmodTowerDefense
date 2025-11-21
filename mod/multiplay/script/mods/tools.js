@@ -93,11 +93,11 @@ function calculateRanks(totalNumRounds)
 	}
 
 	const totalNumRanks = Stats.Brain["Z NULL BRAIN"].RankThresholds.length;
-	const step = Math.max(1, Math.floor(totalNumRanks / (totalNumRounds - 1)));
+	const step = Math.max(1, Math.floor((totalNumRanks - 1) / (totalNumRounds - 1)));
 
 	for (let i = 1; i <= totalNumRounds; i++)
 	{
-		result[i] = Math.floor((i - 1) / Math.ceil((totalNumRounds - 1) / totalNumRanks)) * step;
+		result[i] = Math.floor((i - 1) / Math.ceil((totalNumRounds - 1) / (totalNumRanks - 1))) * step;
 	}
 
 	return result;
