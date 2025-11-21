@@ -100,5 +100,5 @@ function isAlive(player) {
 function isGameOver(alive, dead) {
     return alive.length <= 0
         || isGameExpired()
-        || (index >= actions.length && Spawner.queue.length == 0 && countDroid(DROID_ANY, scavengerPlayer) == 0);
+        || (index >= actions.length && Spawner.queue.length == 0 && countDroid(DROID_ANY, scavAI) == 0);
 }
