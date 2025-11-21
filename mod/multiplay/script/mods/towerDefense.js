@@ -3,7 +3,7 @@
 let actions = [];
 let totalRounds = 0;
 let researchDelayMs = 0;
-let powerRewardFunction = (power) => power;
+let powerRewardFunction = defaultPowerRewardFunction();
 
 // These variables are NOT automatically recreated upon save-load
 // Use `var` to persist through save-loads
@@ -52,6 +52,22 @@ function updateResearch()
 {
 	const timeMs = currentResearchTime() - researchDelayMs;
 	giveResearch(scavAI, timeMs);
+}
+
+function defaultPowerRewardFunction()
+{
+	if (powerType === 0) // Low
+	{
+		return power => (9*power)**0.51
+	}
+	else if (powerType === 1) // Medium
+	{
+		return power => (9*power)**0.56
+	}
+	else // High
+	{
+		return power => (9*power)**0.60
+	}
 }
 
 

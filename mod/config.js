@@ -124,7 +124,6 @@ dragonT = [
 ]
 
 setResearchDelay(360)
-setPowerRewardFunction(power => (4*power)**0.75)
 
 wait(180), round(1), spawn(15,people), spawn(5,scavs), spawn(15,people)
 wait(100), round(2), spawn(30,people), spawn(15,scavs), spawn(30,people)
