@@ -1,6 +1,6 @@
 /**
- * Make every component available to the given player.
- * This means the player can actually build designs with it.
+ * Make every component available to the given player. This means the player can
+ * actually build any unit, regardless of what is currently researched.
  */
 function makeEverythingAvailable(player)
 {
@@ -32,19 +32,47 @@ function removeScavengerAI()
 	hackNetOn();
 }
 
+/**
+ * @returns {number} The player number to use for the scavenger AI
+ */
+function getScavAI()
+{
+	if (scavengers !== 0)
+	{
+		return scavengerPlayer; // "true" scavs
+	}
+
+	for (let player = 0; player < maxPlayers; player++)
+	{
+		if (playerData[player].isAI && playerData[player].name == "Scavengers")
+		{
+			return player; // "false" scavs
+		}
+	}
+
+	// HACK WARNING TODO
+	// No dedicated enemy player has been provided. The mod can still spawn and
+	// control scavengers, but saving/loading will not work because the units
+	// disappear.
+	return scavengerPlayer; // "hack" scavs
+}
+
+/**
+ * @param {number} player
+ * @param {number} power - amount of power increase
+ */
+function addPower(player, power)
+{
+	hackNetOff();
+	setPower(playerPower(player) + power, player);
+	hackNetOn();
+}
+
 function disableVTOL()
 {
 	for (let player = 0; player < maxPlayers; player++)
 	{
 		setStructureLimits("A0VTolFactory1", 0, player);
-	}
-}
-
-function disableBuildHQ()
-{
-	for (let player = 0; player < maxPlayers; player++)
-	{
-		setStructureLimits("A0CommandCentre", 0, player);
 	}
 }
 

@@ -1,54 +1,43 @@
-const actions = [];
-let totalRounds = 0;
-let researchDelayMs = 0;
-let powerRewardFunction = (power) => power;
-
-function round()
-{
-	actions.push({ type: "round", round: ++totalRounds });
-}
-
+/**
+ * Delay the scavenger research by some amount of time
+ * @param {number} seconds
+ */
 function setResearchDelay(seconds)
 {
 	researchDelayMs = seconds * 1000;
 }
 
+/**
+ * Configure how much power is rewarded by destroying a scavenger
+ * @param {function(number): number} f - A function that takes the cost of the scavenger and returns an amount
+ */
 function setPowerRewardFunction(f)
 {
 	powerRewardFunction = (power) => Math.ceil(f(power));
 }
 
+/**
+ * Start a new round
+ */
+function round()
+{
+	actions.push({ type: "round", round: ++totalRounds });
+}
+
+/**
+ * Set the timer and wait for it to finish
+ * @param {number} seconds
+ */
 function wait(seconds)
 {
 	actions.push({ type: "wait", seconds });
 }
 
 /**
- * @param {number} count
+ * @param {number} count - How many units to spawn
  * @param {string[]} templatePool - e.g. [ "Machinegun Viper Wheels", "Flamer Viper Wheels" ]
  */
 function spawn(count, templatePool)
 {
-	// Validate the function parameters
-	if (typeof count !== "number" || count < 0 || !Array.isArray(templatePool))
-	{
-		return;
-	}
-
-	// Convert each string in the templatePool to an actual Template
-	templatePool = templatePool.map(t => Template.fromString(t)).filter(t => !!t);
-	if (templatePool.length == 0)
-	{
-		return;
-	}
-
-	// Randomly select templates from the templatePool
-	const selectedTemplates = [];
-	for (let i = 0; i < count; i++)
-	{
-		const selectedTemplate = templatePool[syncRandom(templatePool.length)];
-		selectedTemplates.push(selectedTemplate);
-	}
-
-	actions.push({ type: "spawn", templates: selectedTemplates });
+	actions.push({ type: "spawn", count, templatePool });
 }

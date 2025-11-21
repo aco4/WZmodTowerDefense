@@ -1,35 +1,34 @@
 class Template
 {
 	/**
-	 * @param {string} body - name of the body (e.g. "Viper")
-	 * @param {string} propulsion - name of the propulsion (e.g. "Wheels")
-	 * @param {string[]} turrets - names of the turrets (e.g. ["Truck"])
+	 * @param {string} body - component name
+	 * @param {string} propulsion - component name
+	 * @param {string[]} turrets - array of component names
+	 * @returns {object}
 	 */
-	constructor(body, propulsion, turrets)
+	static from(body, propulsion, turrets)
 	{
-		this.body = body;
-		this.propulsion = propulsion;
-		this.turrets = turrets;
+		return { body, propulsion, turrets };
 	}
 
-	spawn(player, x, y)
+	static spawn(template, player, x, y)
 	{
 		hackNetOff();
 		const droid = addDroid(
 			player, x, y,
-			this.toString(),
-			Stats.Body[this.body].Id,
-			Stats.Propulsion[this.propulsion].Id,
+			Template.toString(template),
+			Stats.Body[template.body].Id,
+			Stats.Propulsion[template.propulsion].Id,
 			"", "",
-			...this.turrets.map(turret => Template.getTurret(turret)?.Id)
+			...template.turrets.map(turret => Template.getTurret(turret)?.Id)
 		);
 		hackNetOn();
 		return droid;
 	}
 
-	toString()
+	static toString(template)
 	{
-		return this.turrets.join(" ") + " " + this.body + " " + this.propulsion;
+		return template.turrets.join(" ") + " " + template.body + " " + template.propulsion;
 	}
 
 	static getTurret(name)
@@ -44,7 +43,7 @@ class Template
 
 	/**
 	 * @param {string} str - space-separated string in order: turrets, body, propulsion
-	 * @returns {Template|null}
+	 * @returns {object|null} template or null if invalid
 	 */
 	static fromString(str)
 	{
@@ -65,7 +64,7 @@ class Template
 					const turrets = partitionIntoTurrets(turretWords, weaponSlots);
 
 					if (turrets !== null) {
-						return new Template(body, propulsion, turrets);
+						return Template.from(body, propulsion, turrets);
 					}
 				}
 			}

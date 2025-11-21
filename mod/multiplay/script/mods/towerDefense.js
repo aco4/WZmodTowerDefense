@@ -1,36 +1,49 @@
-let rank;
+// These variables are automatically recreated upon save-load
+// No save-load persistence required
+let actions = [];
+let totalRounds = 0;
+let researchDelayMs = 0;
+let powerRewardFunction = (power) => power;
+
+// These variables are NOT automatically recreated upon save-load
+// Use `var` to persist through save-loads
+var ranks;
+var index = 0;
+var scavAI = getScavAI();
+var IS_HACK = scavengers == 0 && scavAI == scavengerPlayer; // HACK WARNING TODO
+
 
 namespace("td_");
 
 function td_eventStartLevel()
 {
+	// Do this after totalRounds is determined
+	ranks = calculateRanks(totalRounds);
+
 	removeScavengerAI();
 	disableVTOL();
-	disableBuildHQ();
-	makeEverythingAvailable(scavengerPlayer);
-	rank = calculateRanks(totalRounds);
+	makeEverythingAvailable(scavAI);
+	Spawner.player = scavAI;
+
+	// Start the config reader
 	next();
 
 	setTimer("updateResearch", 10 * 1000);
 
-	if (scavengers === 0) // Scavenger AI disabled
+	if (IS_HACK) // HACK WARNING TODO
 	{
-		// Control with fake AI
 		setTimer("updateOrders", 1000);
 	}
 }
 
 function td_eventDestroyed(object)
 {
-	// Reward players with power upon killing a scavenger
-	// The reward amount = the cost of the destroyed object, modified by some power reward function
-	if (object.player == scavengerPlayer)
+	// Reward players with power upon destroying a scavenger
+	if (object.player == scavAI)
 	{
 		for (let player = 0; player < maxPlayers; player++)
 		{
-			hackNetOff();
-			setPower(playerPower(player) + powerRewardFunction(object.cost), player);
-			hackNetOn();
+			addPower(player, powerRewardFunction(object.cost));
 		}
 	}
 }
@@ -38,50 +51,29 @@ function td_eventDestroyed(object)
 function updateResearch()
 {
 	const timeMs = currentResearchTime() - researchDelayMs;
-	giveResearch(scavengerPlayer, timeMs);
+	giveResearch(scavAI, timeMs);
 }
 
-function next()
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+// Do not allow the player to rebuild their HQ after it is destroyed.
+// (For save-load safety, the structure limit can't be 0 while the player has HQ)
+
+namespace("disableRebuildHQ_");
+
+function disableRebuildHQ_eventDestroyed(object)
 {
-	const action = actions.shift();
-	if (action)
+	if (object.type === STRUCTURE && object.stattype === HQ) // NOTE Do we need to check if enumStruct(object.player, HQ).length == 0?
 	{
-		if (action.type == "round")
-		{
-			processRound(action);
-		}
-		else if (action.type == "wait")
-		{
-			processWait(action);
-		}
-		else if (action.type == "spawn")
-		{
-			processSpawn(action);
-		}
+		setStructureLimits("A0CommandCentre", 0, object.player);
 	}
 }
 
-function processRound(action)
-{
-	console(" ");
-	console(_("Round") + " " + action.round + "/" + totalRounds);
-	console(" ");
-	Spawner.rank = rank[action.round];
-	playSound("pcv373.ogg"); // "Scavengers detected"
-	queue("next");
-}
-
-function processWait(action)
-{
-	if (action.seconds > 20)
+function disableRebuildHQ_eventStructureDemolish(structure, droid) {
+	if (structure.stattype === HQ)
 	{
-		setMissionTime(action.seconds);
+		setStructureLimits("A0CommandCentre", 0, structure.player);
 	}
-	queue("next", action.seconds * 1000);
-}
-
-function processSpawn(action)
-{
-	Spawner.queue.push(...action.templates);
-	queue("next");
 }

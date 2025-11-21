@@ -7,6 +7,11 @@ function tdspawner_eventStartLevel()
 	setTimer("updateSpawnLocations", 30 * 1000);
 }
 
+function updateSpawnLocations()
+{
+	Spawner.updateLocations();
+}
+
 function flush()
 {
 	if (Spawner.locations.length > 0 && Spawner.queue.length > 0)
@@ -21,27 +26,27 @@ function flush()
 	}
 }
 
-function updateSpawnLocations()
-{
-	Spawner.updateLocations();
-}
-
 class Spawner
 {
-	static queue = [];
+	static {
+		SaveLoad.persist(this);
+	}
 	static locations = [];
+	static queue = [];
+	static player = null;
 	static rank = 0;
 
 	static spawn()
 	{
-		if (Spawner.locations.length === 0 || Spawner.queue.length === 0)
+		if (Spawner.locations.length === 0 || Spawner.queue.length === 0 || Spawner.player === null)
 		{
 			return;
 		}
 		const [x, y] = Spawner.locations[syncRandom(Spawner.locations.length)];
 		const template = Spawner.queue.shift();
-		const droid = template.spawn(scavengerPlayer, x, y);
-		setDroidExperience(droid, Stats.Brain["Z NULL BRAIN"].RankThresholds[Spawner.rank]);
+		const droid = Template.spawn(template, Spawner.player, x, y);
+		const rank = Spawner.rank ?? 0; // Spawner.rank could be undefined after a save-load, so default to 0
+		setDroidExperience(droid, Stats.Brain["Z NULL BRAIN"].RankThresholds[rank]);
 	}
 
 	static updateLocations()
