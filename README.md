@@ -9,7 +9,7 @@
 ## Download
 1. Start Warzone 2100. Click **Options**
 2. Click "Open Configuration Directory"
-3. Download [`📦2c-TowerDefense1_x.wz`](https://github.com/aco4/WZmodTowerDefense/raw/refs/heads/main/map/2c-TowerDefense1_x.wz). Put in `📁maps/`
+3. Download [`📦2c-TowerDefense1_x.wz`](https://github.com/aco4/WZmodTowerDefense/raw/refs/heads/master/map/2c-TowerDefense1_x.wz). Put in `📁maps/`
 4. Download [`📦WZmodTowerDefense.zip`](https://github.com/aco4/WZmodTowerDefense/releases/latest). Put in `📁mods/4.7.0/autoload/`
 5. Restart Warzone 2100
 
