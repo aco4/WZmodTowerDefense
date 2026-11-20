@@ -156,4 +156,4 @@ wait(140), round(26), spawn(12,seraph), spawn(20,wyvernH), spawn(45,nexus), spaw
 wait(140), round(27), spawn(15,vengeanceH), spawn(60,wyvernH), spawn(20,nexus), spawn(14,seraph)
 wait(140), round(28), spawn(10,wyvernT), spawn(30,cybsT4), spawn(60,nexus), spawn(16,seraph)
 wait(140), round(29), spawn(20,wyvernT), spawn(18,seraph), spawn(40,nexus)
-wait(270), round(30), spawn(60,dragonH), spawn(40,dragonT), spawn(20,dragonH), spawn(90,cybsT4)
+wait(270), round(30), spawn(60,dragonH), spawn(50,dragonT), spawn(20,dragonH), spawn(90,cybsT4)
