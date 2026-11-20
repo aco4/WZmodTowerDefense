@@ -140,7 +140,7 @@ wait(160), round(11), spawn(35,bugs), spawn(5,scorps), spawn(5,pythons), spawn(1
 wait(140), round(12), spawn(10,cybsT1), spawn(15,pythons), spawn(12,mra), spawn(15,scorps)
 wait(140), round(13), spawn(30,scorps), spawn(2,vengeanceT), spawn(25,pythons), spawn(15,bugs), spawn(6,mra), spawn(6,hra)
 wait(140), round(14), spawn(30,pythons), spawn(10,panthers), spawn(30,cybsT1), spawn(8,hra)
-wait(140), round(15), spawn(100,bugs), spawn(35,scorps), spawn(10,mantis), spawn(5,vengeanceH)
+wait(140), round(15), spawn(90,bugs), spawn(35,scorps), spawn(10,mantis), spawn(5,vengeanceH)
 wait(140), round(16), spawn(3,vengeanceT), spawn(5,scorps), spawn(15,mantis), spawn(6,vengeanceH), spawn(12,hra), spawn(10,pythons), spawn(30,panthers)
 wait(140), round(17), spawn(3,vengeanceT), spawn(15,cybsT2), spawn(20,mantis), spawn(40,panthers), spawn(10,hra)
 wait(140), round(18), spawn(10,vengeanceH), spawn(25,mantis), spawn(60,panthers), spawn(16,hra)
