@@ -66,15 +66,15 @@ function defaultPowerRewardFunction()
 {
 	if (powerType === 0) // Low
 	{
-		return power => Math.ceil((9*power)**0.51);
+		return power => Math.ceil((15*power)**0.43);
 	}
 	else if (powerType === 1) // Medium
 	{
-		return power => Math.ceil((9*power)**0.56);
+		return power => Math.ceil((15*power)**0.48);
 	}
 	else // High
 	{
-		return power => Math.ceil((9*power)**0.60);
+		return power => Math.ceil((15*power)**0.52);
 	}
 }
 
